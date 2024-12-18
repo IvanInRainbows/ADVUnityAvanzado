@@ -21,7 +21,7 @@ public class Killbox : MonoBehaviour
             //collider.gameObject.SetActive(false);
             /*Destroy(collider.gameObject);
             Destroy(this.gameObject);*/
-            collider.gameObject.GetComponent<PlayerManager>().Respawn();
+            collider.gameObject.GetComponent<PlayerManager>().Die();
         }
     }
 }

@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.MPE;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -30,8 +32,19 @@ public class PlayerManager : MonoBehaviour
         rp.GetComponent<RspawnPoint>().switchActive();
     }
 
-    internal void Respawn(){
+    public void Respawn(){
+        rsui.SetActive(false);
+        this.gameObject.SetActive(true);
+        this.GetComponent<Rigidbody>().velocity *=  0;
         transform.position = rp.transform.position;
     }
 
+    public void Die(){
+        this.gameObject.SetActive(false);
+        rsui.SetActive(true);
+    }
+
+    public void reload(){
+        SceneManager.LoadScene("SampleScene");
+    }
 }
